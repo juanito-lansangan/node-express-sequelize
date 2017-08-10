@@ -14,8 +14,10 @@ router.get('/pdrn/:page', function(req, res, next) {
     offset: page,
     limit: limit,
     include: [
-      {model: City, as: 'city'},
-      {model: Province, as: 'province'}
+      City,
+      Province
+      // {model: City, as: 'city'},
+      // {model: Province, as: 'province'}
     ]
   })
   .then(res.send.bind(res))

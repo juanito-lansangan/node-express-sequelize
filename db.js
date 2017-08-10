@@ -17,24 +17,4 @@ const Province = require('./models/Province');
 // Defining Relationships
 PdrnRequest.belongsTo(City, {foreignKey: 'address1_citymun'});
 PdrnRequest.belongsTo(Province, {foreignKey: 'address1_province'});
-
-// Park.hasMany(Puppy);
-
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
-// console.log(db.sequelize);
-// console.log(db.Sequelize);
-// Insert models below
-// db.PdrnRequest = db.sequelize.import('./model/pdrn-request');
-// db.City = db.sequelize.import('./model/city');
-// db.User = db.sequelize.import('./model/user');
-
-// Relations
-// db.PdrnRequest.belongsTo(db.City);
-
-
-// var PdrnRequest = require('../models/PdrnRequest');
-// var City = require('../models/City');
-// var User = require('../models/User');
-
-// PdrnRequest.belongsTo(City);
+Province.hasMany(City, {foreignKey: 'province_id'})

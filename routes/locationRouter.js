@@ -20,7 +20,9 @@ router.get('/cities/:provinceId', function(req, res, next) {
 router.get('/provinces', function(req, res, next) {
   var provinceId = req.params.provinceId;
 
-  Province.findAll()
+  Province.findAll({
+    include: [City]
+  })
   .then(res.send.bind(res))
   .catch(next)
 });
