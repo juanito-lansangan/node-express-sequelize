@@ -21,6 +21,8 @@ var app = express();
 
 // logging middleware - written by Fullstack's own Gabriel Lebec!
 app.use(volleyball);
+// file upload
+app.use(fileUpload());
 // body parsing middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
