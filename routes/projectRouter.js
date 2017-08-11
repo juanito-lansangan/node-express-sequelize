@@ -13,3 +13,5 @@ router.get('/:id', ProjectService.getProjectById);
 router.put('/:id', ProjectService.update);
 
 router.put('/:id/user', ProjectService.addUser);
+
+router.put('/:project_id/user/:id/accomplishment', ProjectService.addUserAccomplish);
