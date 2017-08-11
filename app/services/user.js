@@ -1,11 +1,21 @@
 const User = require('../../models/User');
 const UserInformation = require('../../models/UserInformation');
-
+const UserProject = require('../../models/UserProject');
+const Project = require('../../models/Project');
+const UserProjectAccomplish = require('../../models/UserProjectAccomplish');
 var exports = module.exports = {};
 
 exports.all = function(req, res) {
   User.findAll({
-    include: [{all: true}]
+    // include: ['userProjects']
+    include: [{
+      model: UserProject,
+      as: 'projects',
+      include: [
+        {model: Project, as: 'project'},
+        {model: UserProjectAccomplish, as: 'accomplishments'},
+      ]
+    }]
    })
   .then(users => res.status(200).json(users))
   .catch(error => res.status(400).json(error));

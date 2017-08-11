@@ -25,8 +25,7 @@ exports.addUser = function(req, res) {
       return;
     }
 
-    // res.status(200).json(project);
-    project.addUsers(req.body)
+    project.addProjectUsers(req.body.user_id)
     .then(user => res.status(200).json(user))
     .catch(error => res.status(400).json(error));
   })
