@@ -8,9 +8,9 @@ var db = require('./db');
 
 // our routers
 var indexRouter = require('./routes/indexRouter');
-// var userRouter = require('./routes/userRouter');
-// var fileRouter = require('./routes/fileRouter');
-// var ciRouter = require('./routes/ciRouter');
+var userRouter = require('./routes/userRouter');
+var fileRouter = require('./routes/fileRouter');
+var projectRouter = require('./routes/projectRouter');
 // var locationRouter = require('./routes/locationRouter');
 // instantiate an instance of an express server
 var app = express();
@@ -36,9 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // API routers to serve up data from the server
 app.use('/', indexRouter);
-// app.use('/users', userRouter);
-// app.use('/file', fileRouter);
-// app.use('/ci', ciRouter);
+app.use('/users', userRouter);
+app.use('/file', fileRouter);
+app.use('/projects', projectRouter);
 // app.use('/location', locationRouter);
 
 // all routes will eventually hit this by default if response is not sent
@@ -58,11 +58,18 @@ var server = app.listen(port, function() {
   // this is an async callback, so the server.address().port is available
   // and set synchronously by the time we get into this callback function - fancy!
   console.log('Server operating and listening on port', port, '...');
-  db.authenticate()
-  .then(function () {
-     console.log('Connection successful');
-  })
-  .catch(function(error) {
-     console.log("Error creating connection:", error);
-  });
+  // db.authenticate()
+  // .then(function () {
+  //    console.log('Connection successful');
+  // })
+  // .catch(function(error) {
+  //    console.log("Error creating connection:", error);
+  // });
+  // db.sync({force: false})
+  // .then(function () {
+  //    console.log('Connection successful');
+  // })
+  // .catch(function(error) {
+  //    console.log("Error creating connection:", error);
+  // });
 });

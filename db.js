@@ -9,12 +9,15 @@ const db = new Sequelize(config.database, config.username, config.password, conf
 module.exports = db;
 
 // We'll define associations after we import them here
-// const User = require('./models/User');
-// const PdrnRequest = require('./models/PdrnRequest');
-// const City = require('./models/City');
-// const Province = require('./models/Province');
+const User = require('./models/User');
+const UserInformation = require('./models/UserInformation');
+const Project = require('./models/Project');
+const UserProject = require('./models/UserProject');
 
 // Defining Relationships
-// PdrnRequest.belongsTo(City, {foreignKey: 'address1_citymun'});
-// PdrnRequest.belongsTo(Province, {foreignKey: 'address1_province'});
-// Province.hasMany(City, {foreignKey: 'province_id'})
+User.hasOne(UserInformation, {as: 'information', foreignKey: 'user_id'});
+User.hasMany(UserProject, {as: 'userProjects', foreignKey: 'user_id'});
+Project.hasMany(UserProject, {as: 'users', foreignKey: 'project_id'});
+// using pivot table
+User.belongsToMany(Project, {as: 'usersProjects', through: UserProject, foreignKey: 'user_id', otherKey: 'id'});
+Project.belongsToMany(User, {as: 'projectUsers', through: UserProject, foreignKey: 'project_id'});

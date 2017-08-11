@@ -1,7 +1,12 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const User = db.define('user', {
+const User = db.define('User', {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     username: {
       type: Sequelize.STRING,
     },
@@ -13,19 +18,10 @@ const User = db.define('user', {
     },
     is_active: {
       type: Sequelize.INTEGER,
-    },
-    user_id: {
-      type: Sequelize.INTEGER,
-      primaryKey: true
-    },
-    api_token: {
-      type: Sequelize.STRING,
     }
   },
   {
-    timestamps: false,
-    createdAt: false,
-    updatedAt: false,
+    timestamps: true,
     tableName: 'users'
   }
 );

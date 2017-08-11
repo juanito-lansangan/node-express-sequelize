@@ -4,7 +4,8 @@
     "password": "root",
     "database": "basic_node_express_sequelize",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "seederStorage": "json"
   },
   "test": {
     "username": "root",
