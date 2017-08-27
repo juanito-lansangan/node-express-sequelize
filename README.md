@@ -1,2 +1,2 @@
 # node-express-sequelize
-Relational Database ORM for nodejs
+Basic nodejs api using express and sequelize ORM
